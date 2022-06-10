@@ -9,5 +9,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BookmarkTest {
 
+    @Test
+    public void ensureGetUrlReturnsUrl() throws MalformedURLException {
 
+        //arrange
+        URL url = new URL("http://www.google.com");
+        Bookmark bookmark = new Bookmark(url);
+
+        //act
+        URL result = bookmark.getUrl();
+        //assert
+        assertEquals(url, result);
+    }
 }
