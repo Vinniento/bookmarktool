@@ -187,4 +187,24 @@ bookmarks.addBookmark(url);
         // assert
         assertFalse(result);
     }
+
+    //CheckSecureUrlCount
+    @Test
+    public void ensureNoSecureUrlsInBookmarksReturnsZero() throws MalformedURLException {
+
+        //arrange
+        Bookmarks bookmarks = new Bookmarks();
+
+        bookmarks.addBookmark(new URL("http://www.google.at"));
+        bookmarks.addBookmark(new URL("http://www.orf.at"));
+
+        //act
+        int result = bookmarks.getSecureUrlCount();
+        int expectedresult = 0;
+
+
+        //assert
+        assertEquals(expectedresult, result);
+
+    }
 }
