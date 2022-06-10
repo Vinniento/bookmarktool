@@ -48,7 +48,7 @@ public class Bookmarks {
     }
 
     public long getSecureUrlCount() {
-        int count = 0;
+        long count = 0;
         for(Bookmark bm : bookmarkList){
             if(bm.getUrl().toString().contains("https://"))
                 count++;
