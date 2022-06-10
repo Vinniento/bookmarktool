@@ -10,11 +10,21 @@ public class Bookmarks {
 
     public List<Bookmark> addBookmark(URL url) {
 
+        if (checkIfBookmarkExists(url)) {
+            for (Bookmark bookmark : bookmarkList) {
+                bookmark.setRating(bookmark.getRating() + 1);
+            }
+        } else {
             bookmarkList.add(new Bookmark(url));
-
-            return bookmarkList;
+        }
+        return bookmarkList;
     }
 
+    public boolean checkIfBookmarkExists(URL url) {
+        return bookmarkList
+                .stream()
+                .anyMatch(bookmark -> bookmark.getUrl().equals(url));
+    }
     public void addTagToBookmark(URL url, String tag) {
 
         bookmarkList.forEach(bookmark -> {

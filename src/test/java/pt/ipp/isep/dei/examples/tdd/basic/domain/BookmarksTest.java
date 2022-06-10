@@ -7,6 +7,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -147,5 +148,26 @@ public class BookmarksTest {
         //assert
         assertEquals(expectedResult, result);
 
+    }
+
+    @Test
+    public void ensureRatingGetsIncreasedWhenBookmarkIsAgainAdded() throws MalformedURLException {
+        Bookmarks bookmarks = new Bookmarks();
+
+        URL url = new URL("https://www.google.com");
+        // arrange
+        bookmarks.addBookmark(url);
+        bookmarks.addBookmark(url);
+
+        int expectedResult = 1;
+        int result;
+
+        // act
+        result = Objects.requireNonNull(bookmarks.bookmarkList
+                .stream().filter(bookmark -> bookmark.getUrl() == url)
+                .findFirst().orElse(null)).getRating();
+
+        // assert
+        assertEquals(expectedResult, result);
     }
 }
