@@ -2,6 +2,7 @@ package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -24,11 +25,12 @@ public class Bookmarks {
     }
 
     public boolean checkIfBookmarkExists(URL url) {
-        for (Bookmark bm: bookmarkList) {
-            if(bm.getUrl() == url) return true;
+        for (Bookmark bm : bookmarkList) {
+            if (bm.getUrl() == url) return true;
         }
         return false;
     }
+
     public void addTagToBookmark(URL url, String tag) {
 
         bookmarkList.forEach(bookmark -> {
@@ -52,8 +54,8 @@ public class Bookmarks {
 
     public long getSecureUrlCount() {
         long count = 0;
-        for(Bookmark bm : bookmarkList){
-            if(bm.getUrl().toString().contains("https://"))
+        for (Bookmark bm : bookmarkList) {
+            if (bm.getUrl().toString().contains("https://"))
                 count++;
         }
         return count;
@@ -98,7 +100,7 @@ public class Bookmarks {
 
     public List<Bookmark> getBookmarksSortedByRating() {
 
-        return  bookmarkList
+        return bookmarkList
                 .stream()
                 .sorted(Comparator.comparingInt(Bookmark::getRating).reversed())
                 .collect(Collectors.toList());
@@ -107,7 +109,17 @@ public class Bookmarks {
 
     public List<Bookmark> getBookmarksSortedByDate() {
 
-      return new ArrayList<>();
+        return bookmarkList;
+
+    }
+
+    public void setDateTimeForBookmark(URL url, LocalDateTime time) {
+
+        for (Bookmark bm: bookmarkList) {
+            if(bm.getUrl().equals(url))
+                bm.setDateTime(time);
+
+        }
 
     }
 }

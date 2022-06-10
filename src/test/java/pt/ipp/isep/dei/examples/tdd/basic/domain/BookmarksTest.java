@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -179,7 +181,7 @@ public class BookmarksTest {
         URL url = new URL("https://www.google.com");
         URL url1 = new URL("https://www.google.at");
         // arrange
-bookmarks.addBookmark(url);
+        bookmarks.addBookmark(url);
         // act
         boolean result = bookmarks.checkIfBookmarkExists(url1);
 
@@ -494,17 +496,36 @@ bookmarks.addBookmark(url);
     }
 
     @Test
-    public void ensureBookmarksCanBeSortedByDateFromNewerToOlder() throws MalformedURLException {
+    public void ensureGetBookmarksSortedByDateReturnsEmptyListIsEmpty() throws MalformedURLException {
         Bookmarks bookmarks = new Bookmarks();
 
-        // arrange
-
-        // act
 
         List<Bookmark> result = bookmarks.getBookmarksSortedByDate();
 
         // assert
         assertTrue(result.isEmpty());
     }
+
+
+    @Test
+    public void ensureSetDateTimeForBookmark() throws MalformedURLException {
+        Bookmarks bookmarks = new Bookmarks();
+
+        URL url = new URL("http://www.google.com");
+        String tag = "bla";
+        bookmarks.addBookmark(url);
+        bookmarks.addTagToBookmark(url, tag);
+        //arrange
+        LocalDateTime dateTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+
+        //act
+        bookmarks.setDateTimeForBookmark(url, dateTime);
+        Bookmark bookmark = bookmarks.getBookmarksByTag(tag).get(0);
+        LocalDateTime result = bookmark.getCreationTime();
+        //assert
+        assertTrue(dateTime.isEqual(result));
+
+    }
+
 
 }
