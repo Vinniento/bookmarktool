@@ -525,6 +525,30 @@ public class BookmarksTest {
         assertTrue(dateTime.isEqual(result));
 
     }
+
+    @Test
+    public void ensureSetDateTimeForBookmarkEmptyList() throws MalformedURLException, InterruptedException {
+        Bookmarks bookmarks = new Bookmarks();
+        LocalDateTime dateTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+        Thread.sleep(1000);
+
+        URL url = new URL("http://www.google.com");
+        URL url1 = new URL("http://www.gdfgoogle.com");
+        String tag = "bla";
+        bookmarks.addBookmark(url);
+        bookmarks.addTagToBookmark(url, tag);
+        //arrange
+
+        //act
+        bookmarks.setDateTimeForBookmark(url1, dateTime);
+
+        Bookmark bookmark = bookmarks.getBookmarksByTag(tag).get(0);
+        LocalDateTime result = bookmark.getCreationTime();
+        //assert
+        assertTrue(dateTime.isBefore(result));
+
+    }
+
     @Test
     public void ensureBookmarksCanBeSortedByDateFromNewerToOlder() throws MalformedURLException, InterruptedException {
         Bookmarks bookmarks = new Bookmarks();
