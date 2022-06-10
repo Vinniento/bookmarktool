@@ -10,8 +10,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BookmarksTest {
 
@@ -492,6 +491,20 @@ bookmarks.addBookmark(url);
 
         // assert
         assertEquals(expectedResult, result.get(0).getRating());
+    }
+
+    @Test
+    public void ensureBookmarksCanBeSortedByDateFromNewerToOlder() throws MalformedURLException {
+        Bookmarks bookmarks = new Bookmarks();
+
+        // arrange
+
+        // act
+
+        List<Bookmark> result = bookmarks.getBookmarksSortedByDate();
+
+        // assert
+        assertTrue(result.isEmpty());
     }
 
 }

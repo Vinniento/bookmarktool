@@ -104,5 +104,11 @@ public class Bookmarks {
                 .collect(Collectors.toList());
 
     }
+
+    public List<Bookmark> getBookmarksSortedByDate() {
+
+      return bookmarkList;
+
+    }
 }
 
