@@ -3,6 +3,7 @@ package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -94,5 +95,14 @@ public class Bookmarks {
         bookmarkList.removeIf(bookmark -> bookmark.getUrl() == url);
     }
 
+
+    public List<Bookmark> getBookmarksSortedByRating() {
+
+        return  bookmarkList
+                .stream()
+                .sorted(Comparator.comparingInt(Bookmark::getRating).reversed())
+                .collect(Collectors.toList());
+
+    }
 }
 

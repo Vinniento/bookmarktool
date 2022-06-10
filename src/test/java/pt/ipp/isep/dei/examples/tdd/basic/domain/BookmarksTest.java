@@ -470,4 +470,28 @@ bookmarks.addBookmark(url);
 
     }
 
+    @Test
+    public void ensureBookmarksCanBeSortedByRatingFromHighToLow() throws MalformedURLException {
+        Bookmarks bookmarks = new Bookmarks();
+
+        URL url = new URL("https://www.google.com");
+        URL url1 = new URL("https://www.get.com");
+        URL url2 = new URL("https://www.google.at");
+        // arrange
+        bookmarks.addBookmark(url);
+        bookmarks.addBookmark(url);
+        bookmarks.addBookmark(url);
+        bookmarks.addBookmark(url1);
+        bookmarks.addBookmark(url2);
+
+        int expectedResult = 2;
+
+        // act
+
+        List<Bookmark> result = bookmarks.getBookmarksSortedByRating();
+
+        // assert
+        assertEquals(expectedResult, result.get(0).getRating());
+    }
+
 }

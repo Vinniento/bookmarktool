@@ -42,7 +42,10 @@ bookmark
 
 ## US10. 
 As a user I want to add a current
-date/time when I add a bookmark US11. As a user I want to list my bookmarks
+date/time when I add a bookmark 
+
+##US11. 
+As a user I want to list my bookmarks
 sorted by rating (highest to smallest)
 
 ## US12. 
