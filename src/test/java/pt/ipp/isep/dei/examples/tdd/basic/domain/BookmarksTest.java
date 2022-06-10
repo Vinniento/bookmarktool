@@ -31,7 +31,7 @@ public class BookmarksTest {
     }
 
     @Test
-    public void ensueGetTagsReturnsZeroWhenListIsEmpty() throws MalformedURLException {
+    public void ensureGetTagsReturnsZeroWhenListIsEmpty() throws MalformedURLException {
 
         //arrange
         Bookmarks bookmarks = new Bookmarks();
@@ -90,6 +90,26 @@ public class BookmarksTest {
         assertEquals(expectedResult, result);
 
     }
+
+    @Test
+    public void ensureNoTagIsReturnedIfBookmarkListEmpty() throws MalformedURLException {
+
+
+        //arrange
+        Bookmarks bookmarks = new Bookmarks();
+        List<String> expectedResult = new ArrayList<>();
+        URL url = new URL("https://www.google.com");
+
+        //act
+
+        List<String> result = bookmarks.getBookmarkTags(url);
+
+        //result
+        assertEquals(expectedResult, result);
+
+    }
+
+
     @Test
     public void ensureMultipleTagsForBookmark() throws MalformedURLException {
 
