@@ -65,5 +65,12 @@ public class Bookmarks {
                 .filter(bookmark -> Objects.equals(bookmark.getDomain(), domain))
                 .collect(Collectors.toList());
     }
+
+    public List<Bookmark> getBookmarksByTag(String tag) {
+        return bookmarkList
+                .stream()
+                .filter(bookmark -> bookmark.getTags().contains(tag))
+                .collect(Collectors.toList());
+    }
 }
 
