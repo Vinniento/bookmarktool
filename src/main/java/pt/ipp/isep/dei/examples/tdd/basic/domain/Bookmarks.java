@@ -4,6 +4,8 @@ package pt.ipp.isep.dei.examples.tdd.basic.domain;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Bookmarks {
     List<Bookmark> bookmarkList = new ArrayList<>();
@@ -54,6 +56,14 @@ public class Bookmarks {
                 count++;
         }
         return count;
+    }
+
+    public List<Bookmark> getAssociatedBookmarksForDomain(String domain) {
+
+        return bookmarkList
+                .stream()
+                .filter(bookmark -> Objects.equals(bookmark.getDomain(), domain))
+                .collect(Collectors.toList());
     }
 }
 
