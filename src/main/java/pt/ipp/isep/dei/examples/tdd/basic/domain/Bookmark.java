@@ -39,5 +39,9 @@ public class Bookmark {
     public String getDomain() {
         return url.getHost();
     }
+    public void deleteTag(String tag) {
+        this.tags.remove(tag);
+    }
+
 }
 
