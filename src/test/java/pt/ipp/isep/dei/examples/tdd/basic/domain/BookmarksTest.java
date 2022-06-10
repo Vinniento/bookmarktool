@@ -440,7 +440,6 @@ bookmarks.addBookmark(url);
         bookmarks.addBookmark(url);
         bookmarks.addBookmark(url1);
 
-        //List<Bookmark> expectedResult = Arrays.asList(new Bookmark(url1));
         int expectedResult = 1;
         //act
         bookmarks.removeBookmark(url);
