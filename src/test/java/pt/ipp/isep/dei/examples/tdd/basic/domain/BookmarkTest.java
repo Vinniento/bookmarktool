@@ -43,4 +43,26 @@ public class BookmarkTest {
         assertEquals(expectedResult, result);
 
     }
+    @Test
+    public void ensureMultipleTagsForBookmark() throws MalformedURLException {
+
+        URL url = new URL("http://www.google.com");
+        Bookmark bookmark = new Bookmark(url);
+
+        //arrange
+        String firstTag = "firstTag";
+        String secondTag = "secondTag";
+        List<String> expectedResult = Arrays.asList(firstTag, secondTag);
+
+        //act
+        bookmark.addTag(firstTag);
+        bookmark.addTag(secondTag);
+
+        List<String> result = bookmark.getTags();
+
+        //assert
+        assertEquals(expectedResult, result);
+
+    }
+
 }
