@@ -70,6 +70,27 @@ public class BookmarksTest {
     }
 
     @Test
+    public void ensureNoTagIsReturnedIfUrlNotExist() throws MalformedURLException {
+
+
+        //arrange
+        Bookmarks bookmarks = new Bookmarks();
+        String tag = "katzenvideos";
+        List<String> expectedResult = new ArrayList<>();
+        URL url = new URL("https://www.google.com");
+        URL url1 = new URL("https://www.google.at");
+
+        //act
+        bookmarks.addBookmark(url);
+        bookmarks.addTagToBookmark(url1, tag);
+
+        List<String> result = bookmarks.getBookmarkTags(url);
+
+        //result
+        assertEquals(expectedResult, result);
+
+    }
+    @Test
     public void ensureMultipleTagsForBookmark() throws MalformedURLException {
 
         URL url = new URL("http://www.google.com");
