@@ -1,14 +1,17 @@
 package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Bookmark {
 
-    URL url;
-    List<String> tags;
-    int rating = 0;
+    private final URL url;
+    private final List<String> tags;
+    private int rating = 0;
+    private LocalDateTime creationTime;
 
     public Bookmark(URL url) {
         this.url = url;
@@ -43,5 +46,12 @@ public class Bookmark {
         this.tags.remove(tag);
     }
 
+    public LocalDateTime getCreationTime() {
+        return this.creationTime;
+    }
+
+    public void setDateTime() {
+        this.creationTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+    }
 }
 
