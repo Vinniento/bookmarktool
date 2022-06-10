@@ -21,9 +21,10 @@ public class Bookmarks {
     }
 
     public boolean checkIfBookmarkExists(URL url) {
-        return bookmarkList
-                .stream()
-                .anyMatch(bookmark -> bookmark.getUrl().equals(url));
+        for (Bookmark bm: bookmarkList) {
+            if(bm.getUrl() == url) return true;
+        }
+        return false;
     }
     public void addTagToBookmark(URL url, String tag) {
 
