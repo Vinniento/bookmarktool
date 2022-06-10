@@ -199,12 +199,11 @@ bookmarks.addBookmark(url);
         bookmarks.addBookmark(new URL("http://www.orf.at"));
 
         //act
-        int result = bookmarks.getSecureUrlCount();
-        int expectedresult = 0;
-
+        long result = bookmarks.getSecureUrlCount();
 
         //assert
-        assertEquals(expectedresult, result);
+        assertEquals(1, result);
 
     }
+
 }

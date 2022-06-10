@@ -47,11 +47,13 @@ public class Bookmarks {
         return tag;
     }
 
-    public int getSecureUrlCount() {
-        return (int) bookmarkList.stream()
-                .filter(b -> b.getUrl().toString().contains("https://"))
-                .count();
+    public long getSecureUrlCount() {
+        int count = 0;
+        for(Bookmark bm : bookmarkList){
+            if(bm.getUrl().toString().contains("https://"))
+                count++;
+        }
+        return count;
     }
-
 }
 
