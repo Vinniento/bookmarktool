@@ -174,7 +174,7 @@ public class BookmarksTest {
     }
 
     @Test
-    public void ensureRatingDoesNotGetIncreasedWhenBookmarkIsAgainAddedThatDoesNotExist() throws MalformedURLException {
+    public void ensureCheckIfBookmarkExists() throws MalformedURLException {
         Bookmarks bookmarks = new Bookmarks();
 
         URL url = new URL("https://www.google.com");
