@@ -107,7 +107,7 @@ public class Bookmarks {
 
     public List<Bookmark> getBookmarksSortedByDate() {
 
-      return bookmarkList;
+      return new ArrayList<>();
 
     }
 }
