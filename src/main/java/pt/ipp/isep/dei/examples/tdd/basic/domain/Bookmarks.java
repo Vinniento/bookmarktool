@@ -72,5 +72,13 @@ public class Bookmarks {
                 .filter(bookmark -> bookmark.getTags().contains(tag))
                 .collect(Collectors.toList());
     }
+
+    public List<Bookmark> getBookmarksByTags(List<String> tags) {
+        List<Bookmark> result = new ArrayList<>();
+        for (String tag : tags) {
+            result.addAll(getBookmarksByTag(tag));
+        }
+        return result;
+    }
 }
 
