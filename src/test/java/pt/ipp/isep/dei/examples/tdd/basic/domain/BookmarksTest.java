@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -526,6 +525,27 @@ public class BookmarksTest {
         assertTrue(dateTime.isEqual(result));
 
     }
+    @Test
+    public void ensureBookmarksCanBeSortedByDateFromNewerToOlder() throws MalformedURLException, InterruptedException {
+        Bookmarks bookmarks = new Bookmarks();
+        URL url = new URL("https://www.google.com");
+        URL url1 = new URL("https://www.get.com");
 
+        // arrange
+        bookmarks.addBookmark(url);
+
+        Thread.sleep(1000);
+        bookmarks.addBookmark(url1);
+        // act
+
+
+        List<Bookmark> result = bookmarks.getBookmarksSortedByDate();
+        Bookmark older = result.get(0);
+        Bookmark newer = result.get(1);
+
+
+        // assert
+        assertTrue(newer.getCreationTime().isAfter(older.getCreationTime()));
+    }
 
 }

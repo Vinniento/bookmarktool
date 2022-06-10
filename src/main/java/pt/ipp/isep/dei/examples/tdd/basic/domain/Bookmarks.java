@@ -1,12 +1,10 @@
 package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
 
+import java.awt.print.Book;
 import java.net.URL;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Bookmarks {
@@ -109,18 +107,27 @@ public class Bookmarks {
 
     public List<Bookmark> getBookmarksSortedByDate() {
 
-        return bookmarkList;
+        if (!bookmarkList.isEmpty())
+            return
+                    bookmarkList
+                            .stream()
+                            .sorted(new Comparator<Bookmark>() {
+                                public int compare(Bookmark o1, Bookmark o2) {
+                                    return o1.getCreationTime().compareTo(o2.getCreationTime());
+                                }
+                            })
+                            .collect(Collectors.toList());
 
+        return  new ArrayList<>();
     }
 
     public void setDateTimeForBookmark(URL url, LocalDateTime time) {
 
-        for (Bookmark bm: bookmarkList) {
-            if(bm.getUrl().equals(url))
+        for (Bookmark bm : bookmarkList) {
+            if (bm.getUrl().equals(url))
                 bm.setDateTime(time);
 
         }
-
     }
 }
 
