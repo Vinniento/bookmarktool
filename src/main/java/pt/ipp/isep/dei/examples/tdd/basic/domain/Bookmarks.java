@@ -15,11 +15,25 @@ public class Bookmarks {
             return bookmarkList;
     }
 
+    public void addTagToBookmark(URL url, String tag) {
+
+        bookmarkList.forEach(bookmark -> {
+            if (bookmark.getUrl() == url) {
+                bookmark.addTag(tag);
+            }
+        });
+    }
 
     public List<String> getBookmarkTags(URL url) {
+        List<String> tag = new ArrayList<>();
 
-
-        return new ArrayList<>();
+        for (Bookmark bookmark : bookmarkList) {
+            if (bookmark.getUrl() == url) {
+                tag = bookmark.getTags();
+                break;
+            }
+        }
+        return tag;
     }
 
 }
