@@ -550,6 +550,28 @@ public class BookmarksTest {
     }
 
     @Test
+    public void ensureSetDateTimeForBookmark2() throws MalformedURLException, InterruptedException {
+        Bookmarks bookmarks = new Bookmarks();
+        LocalDateTime dateTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+        Thread.sleep(1000);
+
+        URL url = new URL("http://www.google.com");
+        String tag = "bla";
+        bookmarks.addBookmark(url);
+        bookmarks.addTagToBookmark(url, tag);
+        //arrange
+
+        //act
+        bookmarks.setDateTimeForBookmark(url, dateTime);
+
+        Bookmark bookmark = bookmarks.getBookmarksByTag(tag).get(0);
+        LocalDateTime result = bookmark.getCreationTime();
+        //assert
+        assertTrue(dateTime.isEqual(result));
+
+    }
+
+    @Test
     public void ensureBookmarksCanBeSortedByDateFromNewerToOlder() throws MalformedURLException, InterruptedException {
         Bookmarks bookmarks = new Bookmarks();
         URL url = new URL("https://www.google.com");
