@@ -35,5 +35,9 @@ public class Bookmark {
     public void setRating(int rating) {
         this.rating = rating;
     }
+
+    public String getDomain() {
+        return url.getHost();
+    }
 }
 

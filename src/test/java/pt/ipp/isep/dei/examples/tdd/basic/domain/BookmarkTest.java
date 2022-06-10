@@ -81,4 +81,19 @@ public class BookmarkTest {
         assertEquals(expectedResult, result);
     }
 
+    @Test
+    public void ensureDomainIsReturnedProperly() throws MalformedURLException {
+
+        //arrange
+        URL url = new URL("http://www.google.com");
+        Bookmark bookmark = new Bookmark(url);
+
+        //act
+        String result = bookmark.getDomain();
+        String expectedResult = "www.google.com";
+
+        //assert
+        assertEquals(expectedResult, result);
+    }
+
 }
