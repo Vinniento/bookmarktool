@@ -80,5 +80,14 @@ public class Bookmarks {
         }
         return result;
     }
+
+    public void deleteTagFromBookmark(URL url, String tag) {
+
+        for (Bookmark bookmark : bookmarkList) {
+            if (bookmark.getUrl() == url) {
+                bookmark.deleteTag(tag);
+            }
+        }
+    }
 }
 
