@@ -8,6 +8,7 @@ public class Bookmark {
 
     URL url;
     List<String> tags;
+    int rating = 0;
 
     public Bookmark(URL url) {
         this.url = url;
@@ -25,6 +26,14 @@ public class Bookmark {
 
     public List<String> getTags() {
         return this.tags;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 }
 

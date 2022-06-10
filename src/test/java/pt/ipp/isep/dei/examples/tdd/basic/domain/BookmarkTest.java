@@ -65,4 +65,20 @@ public class BookmarkTest {
 
     }
 
+    @Test
+    public void ensureSetRating() throws MalformedURLException {
+
+        //arrange
+        URL url = new URL("http://www.google.com");
+        Bookmark bookmark = new Bookmark(url);
+        bookmark.setRating(2);
+
+        //act
+        int result = bookmark.getRating();
+        int expectedResult = 2;
+
+        //assert
+        assertEquals(expectedResult, result);
+    }
+
 }
