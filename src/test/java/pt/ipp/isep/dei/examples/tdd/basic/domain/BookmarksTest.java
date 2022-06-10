@@ -70,7 +70,7 @@ public class BookmarksTest {
     }
 
     @Test
-    public void ensureNoTagIsReturnedIfUrlNotExist() throws MalformedURLException {
+    public void ensureNoTagIsAddedIfUrlNotExist() throws MalformedURLException {
 
 
         //arrange
@@ -94,7 +94,6 @@ public class BookmarksTest {
     @Test
     public void ensureNoTagIsReturnedIfBookmarkListEmpty() throws MalformedURLException {
 
-
         //arrange
         Bookmarks bookmarks = new Bookmarks();
         List<String> expectedResult = new ArrayList<>();
@@ -103,6 +102,24 @@ public class BookmarksTest {
         //act
 
         List<String> result = bookmarks.getBookmarkTags(url);
+
+        //result
+        assertEquals(expectedResult, result);
+
+    }
+
+    @Test
+    public void ensureNoTagIsReturnedIfUrlNotExist() throws MalformedURLException {
+
+        //arrange
+        Bookmarks bookmarks = new Bookmarks();
+        List<String> expectedResult = new ArrayList<>();
+        URL url = new URL("https://www.google.com");
+        URL url1 = new URL("https://www.google.at");
+        bookmarks.addBookmark(url);
+        //act
+
+        List<String> result = bookmarks.getBookmarkTags(url1);
 
         //result
         assertEquals(expectedResult, result);
