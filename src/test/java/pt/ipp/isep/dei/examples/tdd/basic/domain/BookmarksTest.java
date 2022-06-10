@@ -8,8 +8,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class BookmarksTest {
 
@@ -169,5 +171,19 @@ public class BookmarksTest {
 
         // assert
         assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void ensureRatingDoesNotGetIncreasedWhenBookmarkIsAgainAddedThatDoesNotExist() throws MalformedURLException {
+        Bookmarks bookmarks = new Bookmarks();
+
+        URL url = new URL("https://www.google.com");
+        // arrange
+
+        // act
+        boolean result = bookmarks.checkIfBookmarkExists(url);
+
+        // assert
+        assertFalse(result);
     }
 }

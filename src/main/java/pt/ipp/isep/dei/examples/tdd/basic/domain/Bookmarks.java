@@ -23,7 +23,6 @@ public class Bookmarks {
     public boolean checkIfBookmarkExists(URL url) {
         return bookmarkList
                 .stream()
-                .distinct()
                 .anyMatch(bookmark -> bookmark.getUrl().equals(url));
     }
     public void addTagToBookmark(URL url, String tag) {
