@@ -178,10 +178,11 @@ public class BookmarksTest {
         Bookmarks bookmarks = new Bookmarks();
 
         URL url = new URL("https://www.google.com");
+        URL url1 = new URL("https://www.google.at");
         // arrange
-
+bookmarks.addBookmark(url);
         // act
-        boolean result = bookmarks.checkIfBookmarkExists(url);
+        boolean result = bookmarks.checkIfBookmarkExists(url1);
 
         // assert
         assertFalse(result);
