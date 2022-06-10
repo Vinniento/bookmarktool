@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Bookmarks {
-    List<Bookmark> bookmarks = new ArrayList<>();
+    List<Bookmark> bookmarkList = new ArrayList<>();
 
     public List<Bookmark> addBookmark(URL url) {
 
-            bookmarks.add(new Bookmark(url));
+            bookmarkList.add(new Bookmark(url));
 
-            return bookmarks;
+            return bookmarkList;
     }
 
 }
