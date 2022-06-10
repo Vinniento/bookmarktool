@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BookmarkTest {
 
@@ -129,10 +130,10 @@ public class BookmarkTest {
         LocalDateTime dateTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
 
         //act
-        bookmark.setDateTime();
+        bookmark.setDateTime(dateTime);
         LocalDateTime result = bookmark.getCreationTime();
         //assert
-        assertEquals(dateTime, result);
+        assertTrue(dateTime.isEqual(result));
 
     }
 }

@@ -1,8 +1,8 @@
 package pt.ipp.isep.dei.examples.tdd.basic.domain;
 
+
 import java.net.URL;
 import java.time.LocalDateTime;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,8 +50,8 @@ public class Bookmark {
         return this.creationTime;
     }
 
-    public void setDateTime() {
-        this.creationTime = LocalDateTime.now().truncatedTo(ChronoUnit.SECONDS);
+    public void setDateTime(LocalDateTime time) {
+        this.creationTime = time;
     }
 }
 
