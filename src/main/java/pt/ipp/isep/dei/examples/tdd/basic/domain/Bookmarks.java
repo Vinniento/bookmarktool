@@ -89,5 +89,10 @@ public class Bookmarks {
             }
         }
     }
+
+    public void removeBookmark(URL url) {
+        bookmarkList.removeIf(bookmark -> bookmark.getUrl() == url);
+    }
+
 }
 
