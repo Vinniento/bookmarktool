@@ -29,5 +29,21 @@ public class BookmarksTest {
         assertEquals(expectedResult.get(0).getUrl(), result.get(0).getUrl());
     }
 
+    @Test
+    public void ensueGetTagsReturnsZeroWhenListIsEmpty() throws MalformedURLException {
+
+        //arrange
+        Bookmarks bookmarks = new Bookmarks();
+        URL url = new URL("http://www.google.com");
+
+        //act
+        bookmarks.addBookmark(url);
+
+        List<String> result = bookmarks.getBookmarkTags(url);
+
+        //result
+        assertEquals(0, result.size());
+
+    }
 
 }

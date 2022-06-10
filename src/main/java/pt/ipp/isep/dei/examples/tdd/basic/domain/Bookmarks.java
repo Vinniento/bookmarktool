@@ -15,5 +15,12 @@ public class Bookmarks {
             return bookmarkList;
     }
 
+
+    public List<String> getBookmarkTags(URL url) {
+
+
+        return new ArrayList<>();
+    }
+
 }
 
