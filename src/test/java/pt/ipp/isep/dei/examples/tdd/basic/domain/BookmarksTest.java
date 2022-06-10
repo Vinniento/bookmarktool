@@ -332,4 +332,27 @@ bookmarks.addBookmark(url);
         assertEquals(expectedResult, result);
     }
 
+    @Test
+    public void ensureFilteringByMultipleKeywordsThatDoNotExistReturnTotal() throws MalformedURLException {
+        URL url = new URL("http://www.google.com");
+        URL url1 = new URL("http://www.face.com/bla");
+        URL url2 = new URL("http://www.google.at/extra");
+
+        Bookmarks bookmarks = new Bookmarks();
+        //arrange
+        String firstTag = "firstTag";
+        String secondTag = "secondTag";
+        bookmarks.addBookmark(url);
+        bookmarks.addBookmark(url1);
+        bookmarks.addBookmark(url2);
+
+        //act
+        int result = bookmarks.getBookmarksByTags(Arrays.asList(secondTag, firstTag)).size();
+
+        //result
+        int expectedResult = 0;
+
+        assertEquals(expectedResult, result);
+    }
+
 }
